@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ann Mariya Jose — UI/UX Portfolio</title>
+  <meta name="description" content="Portfolio of Ann Mariya Jose — Frontend & UI/UX Designer" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0b0c;           
+      --card:#111214;         
+      --text:#e9e9ea;         
+      --muted:#a0a0a3;
+      --accent:#d7a977;       
+      --accent-2:#8b6a46;     
+      --ring:rgba(215,169,119,.25);
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+      --radius:18px;
+      --transition:all .3s ease;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6;scroll-behavior:smooth}
+    a{color:var(--accent);text-decoration:none;transition:var(--transition)}
+    a:hover{color:#fff}
+
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+
+    /* Navbar */
+    header.nav{
+      position:sticky;top:0;z-index:100;background:rgba(11,11,12,.7);
+      backdrop-filter:saturate(180%) blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 24px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+
+    .menu{display:flex;gap:18px}
+    .menu a{font-weight:600;color:#f2e7d7;position:relative}
+    .menu a::after{
+      content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--accent);transition:width .3s;
+    }
+    .menu a:hover::after{width:100%}
+
+    /* Hamburger */
+    .hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer}
+    .hamburger span{width:25px;height:3px;background:var(--text);border-radius:2px;transition:.3s}
+    .menu.mobile{display:none;flex-direction:column;gap:12px;background:var(--card);padding:20px;border-radius:var(--radius);margin-top:10px}
+
+    /* Hero */
+    .hero{padding:64px 24px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.08);transition:transform .3s}
+    .card:hover{transform:translateY(-4px)}
+    .hero-card{padding:32px;animation:fadeInUp 1s ease both}
+    .kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(123,75,42,.08);color:var(--accent);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(28px,4.2vw,48px);line-height:1.15;margin:14px 0 8px}
+    .lead{font-size:clamp(15px,2.2vw,18px);color:#cbb79b}
+    .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;font-weight:700;border:1px solid var(--accent);color:#fff;background:var(--accent);transition:var(--transition)}
+    .btn:hover{background:transparent;color:var(--accent)}
+    .btn.secondary{background:transparent;color:var(--accent)}
+    .btn.secondary:hover{background:var(--accent);color:#fff}
+    .meta{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px;color:var(--muted);font-size:14px}
+
+    /* Sections */
+    section{padding:40px 24px;opacity:0;transform:translateY(30px);transition:opacity .8s, transform .8s}
+    section.visible{opacity:1;transform:translateY(0)}
+    .section-title{font-size:26px;margin:6px 0 18px}
+
+    /* Skills */
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .pill{padding:10px 12px;border-radius:12px;background:#121111;border:1px solid rgba(248,243,243,0.2);box-shadow:var(--shadow);font-weight:600;cursor:pointer;transition:var(--transition)}
+    .pill:hover{background:var(--accent);color:#fff;transform:scale(1.05)}
+
+    /* Projects */
+    .projects{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .project{padding:22px;position:relative;overflow:hidden}
+    .project .tag{position:absolute;right:16px;top:16px;background:var(--accent);color:#fff;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}
+    .project img{max-width:100%;border-radius:12px;margin-top:10px;transition:var(--transition)}
+    .project img:hover{transform:scale(1.05)}
+
+    /* Contact */
+    .contact-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .contact-card{padding:18px;text-align:center;transition:var(--transition)}
+    .contact-card:hover{background:rgba(255,255,255,.05);border-radius:12px}
+
+    footer{padding:28px 24px;color:var(--muted);text-align:center}
+
+    /* Animations */
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+      .skills-grid{grid-template-columns:repeat(2,1fr)}
+      .projects{grid-template-columns:1fr}
+      .contact-cards{grid-template-columns:repeat(2,1fr)}
+      .hamburger{display:flex}
+      .menu{display:none}
+      .menu.mobile.show{display:flex}
+    }
+    @media (max-width: 560px){
+      .skills-grid{grid-template-columns:1fr}
+      .meta{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav -->
+  <header class="nav">
+    <div class="nav-inner container">
+      <div class="brand"><span class="dot"></span> <span>Ann Mariya Jose</span></div>
+      <nav class="menu">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav class="menu mobile" id="mobileMenu">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero container">
+    <div class="hero-grid">
+      <div class="hero-card card">
+        <span class="kicker">UI/UX • Frontend</span>
+        <h1>Ann Mariya Jose K.</h1>
+        <p class="lead">Computer Science Student, passionate about UI/UX. I blend design thinking with engineering to ship intuitive, accessible interfaces.</p>
+        <div class="cta">
+          
+          <a class="btn secondary" href="https://drive.google.com/folderview?id=15CNc15JpeAcOYZkTRDr4ICfFyEm4wsyN" target="_blank">Download Resume</a>
+        
+          <a class="btn secondary" href="https://linkedin.com/in/ann-mariya-jose-k-ba07132b3" target="_blank">LinkedIn</a>
+        </div>
+        <div class="meta">
+          <div><strong>Location:</strong> Malappuram, Kerala</div>
+          <div><strong>Email:</strong> <a href="mailto:annmariya0710@gmail.com">annmariya0710@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="card" style="padding:0;display:grid;place-items:center;min-height:300px;background:linear-gradient(135deg,#111,#0a0a09 60%);border:1px dashed #141313">
+        <div style="padding:28px;text-align:center">
+          <img src="portfolio.jpeg" alt="Hero Image" style="max-width:100%;max-height:300px;border-radius:12px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="container">
+    <h2 class="section-title">About Me</h2>
+    <div class="about">
+      <div class="card blurb">
+        <p>I’m a B.Tech Computer Science graduate from Saintgits College of Engineering. Through internships at <b>Nest Digital (Angular)</b> and <b>Pacelab (Flutter)</b>, I built interactive interfaces and discovered a deep interest in <b>UI/UX design</b>. I enjoy turning complex problems into simple, elegant flows and screens.</p>
+        <p>My technical foundation in <b>HTML, CSS, JavaScript, Angular, Flutter, MySQL, and Python</b> helps me bridge the gap between design and development. I value clarity, accessibility, and thoughtful micro-interactions.</p>
+      </div>
+      <div class="card blurb">
+        <p><b>What I’m looking for</b></p>
+        <p>UI/UX Design roles where I can lead or contribute to end-to-end product workflows — research insights, wireframes, prototypes, and delightful UIs — and collaborate closely with engineers to ship.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="container">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="pill">Figma</div>
+      <div class="pill">C Programming</div>
+      <div class="pill">HTML / CSS / JavaScript</div>
+      <div class="pill">Angular</div>
+      <div class="pill">Flutter / Dart</div>
+      <div class="pill">Python & MySQL</div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="container">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects">
+      <article class="card project">
+        <span class="tag">Mobile App</span>
+        <h3>ParkNext — Smart Parking System</h3>
+        <p><b>Problem:</b> Difficulty finding available urban parking causes congestion and time loss.</p>
+        <p><b>Solution:</b> Responsive app with intuitive navigation, real-time slot visibility, and streamlined booking.</p>
+        
+      </article>
+      <article class="card project">
+        <span class="tag">Website</span>
+        <h3>Airport Management System</h3>
+        <p><b>Problem:</b> Inefficiencies in passenger flow and baggage management.</p>
+        <p><b>Solution:</b> Interfaces/modules that streamline operations and improve discoverability of tasks.</p>
+        
+      </article>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="container">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+      <div class="card item">
+        <h4>Frontend Development Intern — Nest Digital, Kochi</h4>
+        <small>Angular • HTML • CSS • JavaScript • API Integration</small>
+        <p>Built interactive UIs with Angular, improved usability, and integrated APIs for dynamic data.</p>
+      </div>
+      <div class="card item">
+        <h4>Flutter Developer Intern — Pacelab, Kochi</h4>
+        <small>Flutter • Dart • Cross-platform Mobile</small>
+        <p>Developed cross-platform mobile applications with smooth and engaging UI experiences.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="container">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-cards">
+      <div class="card contact-card"><b>Email</b><a href="mailto:annmariya0710@gmail.com">annmariya0710@gmail.com</a></div>
+      <div class="card contact-card"><b>Phone</b><a href="tel:+919778347220">+91 97783 47220</a></div>
+      <div class="card contact-card"><b>Github</b><a target="_blank" href="https://github.com/Annmariyajosek?tab=repositories">ann-mariya-jose-k</a></div>
+      <div class="card contact-card"><b>Location</b>Malappuram, Kerala</div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="y"></span> Ann Mariya Jose — Built with semantic HTML & vanilla CSS.
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+    hamburger.addEventListener("click", () => {
+      mobileMenu.classList.toggle("show");
+    });
+
+    // Scroll reveal
+    const sections = document.querySelectorAll("section");
+    const reveal = () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger) sec.classList.add("visible");
+      });
+    };
+    window.addEventListener("scroll", reveal);
+    reveal();
+  </script>
+</body>
+</html>
