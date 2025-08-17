@@ -87,6 +87,11 @@
     .contact-card{padding:18px;text-align:center;transition:var(--transition)}
     .contact-card:hover{background:rgba(255,255,255,.05);border-radius:12px}
 
+    /* Interests */
+    .interests-grid{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:start}
+    .interest-heading{font-weight:700;font-size:18px;color:var(--accent)}
+    .interest-desc{color:var(--muted)}
+
     footer{padding:28px 24px;color:var(--muted);text-align:center}
 
     /* Animations */
@@ -105,6 +110,7 @@
       .hamburger{display:flex}
       .menu{display:none}
       .menu.mobile.show{display:flex}
+      .interests-grid{grid-template-columns:1fr}
     }
     @media (max-width: 560px){
       .skills-grid{grid-template-columns:1fr}
@@ -120,8 +126,12 @@
       <nav class="menu">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
+        <a href="#soft-skills">Soft Skills</a>
+        <a href="#certifications">Certifications</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#interests">Interests</a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="hamburger" id="hamburger">
@@ -131,8 +141,12 @@
     <nav class="menu mobile" id="mobileMenu">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
+      <a href="#soft-skills">Soft Skills</a>
+      <a href="#certifications">Certifications</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#interests">Interests</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -145,9 +159,7 @@
         <h1>Ann Mariya Jose K.</h1>
         <p class="lead">Computer Science Student, passionate about UI/UX. I blend design thinking with engineering to ship intuitive, accessible interfaces.</p>
         <div class="cta">
-          
           <a class="btn secondary" href="https://drive.google.com/folderview?id=15CNc15JpeAcOYZkTRDr4ICfFyEm4wsyN" target="_blank">Download Resume</a>
-        
           <a class="btn secondary" href="https://linkedin.com/in/ann-mariya-jose-k-ba07132b3" target="_blank">LinkedIn</a>
         </div>
         <div class="meta">
@@ -191,6 +203,29 @@
     </div>
   </section>
 
+  <!-- Soft Skills -->
+  <section id="soft-skills" class="container">
+    <h2 class="section-title">Soft Skills</h2>
+    <div class="skills-grid">
+      <div class="pill">Team Collaboration</div>
+      <div class="pill">Communication Skills</div>
+      <div class="pill">Interpersonal Skills</div>
+      <div class="pill">Leadership & Initiative</div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications" class="container">
+    <h2 class="section-title">Certifications</h2>
+    <div class="skills-grid">
+      <div class="pill">Digital Marketing — NIT Calicut</div>
+      <div class="pill">Ethical Hacking</div>
+      <div class="pill">Power BI</div>
+      <div class="pill">Generative AI</div>
+      <div class="pill">Data Analytics</div>
+    </div>
+  </section>
+
   <!-- Projects -->
   <section id="projects" class="container">
     <h2 class="section-title">Projects</h2>
@@ -200,14 +235,12 @@
         <h3>ParkNext — Smart Parking System</h3>
         <p><b>Problem:</b> Difficulty finding available urban parking causes congestion and time loss.</p>
         <p><b>Solution:</b> Responsive app with intuitive navigation, real-time slot visibility, and streamlined booking.</p>
-        
       </article>
       <article class="card project">
         <span class="tag">Website</span>
         <h3>Airport Management System</h3>
         <p><b>Problem:</b> Inefficiencies in passenger flow and baggage management.</p>
         <p><b>Solution:</b> Interfaces/modules that streamline operations and improve discoverability of tasks.</p>
-        
       </article>
     </div>
   </section>
@@ -229,14 +262,43 @@
     </div>
   </section>
 
+  <!-- Leadership -->
+  <section id="leadership" class="container">
+    <h2 class="section-title">Leadership</h2>
+    <div class="card blurb">
+      <p><b>Committee Head — Nakshatra Techno-Cultural Fest</b></p>
+      <p>Volunteered as the head of the Discipline Committee, showcasing strong organizational and leadership skills while coordinating large-scale events.</p>
+    </div>
+  </section>
+
+  <!-- Interests -->
+  <section id="interests" class="container">
+    <h2 class="section-title">Interests</h2>
+    <div class="card" style="padding:24px;">
+      <div class="interests-grid">
+        <div class="interest-heading">Traveling</div>
+        <div class="interest-desc">I love exploring new cultures, destinations, and experiences that broaden my perspective and creativity.</div>
+
+        <div class="interest-heading">Cooking</div>
+        <div class="interest-desc">Experimenting with different cuisines and recipes helps me relax while nurturing my creative side.</div>
+
+        <div class="interest-heading">Watching Movies</div>
+        <div class="interest-desc">I enjoy cinema as a way to learn storytelling, design elements, and immerse myself in creative narratives.</div>
+
+        <div class="interest-heading">Personal Time</div>
+        <div class="interest-desc">I dedicate time for self-care, reflection, and mindfulness, which fuels my productivity and balance.</div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section id="contact" class="container">
     <h2 class="section-title">Contact</h2>
     <div class="contact-cards">
-      <div class="card contact-card"><b>Email</b><a href="mailto:annmariya0710@gmail.com">annmariya0710@gmail.com</a></div>
-      <div class="card contact-card"><b>Phone</b><a href="tel:+919778347220">+91 97783 47220</a></div>
-      <div class="card contact-card"><b>Github</b><a target="_blank" href="https://github.com/Annmariyajosek?tab=repositories">ann-mariya-jose-k</a></div>
-      <div class="card contact-card"><b>Location</b>Malappuram, Kerala</div>
+      <div class="card contact-card"><b>Email :</b><a href="mailto:annmariya0710@gmail.com">annmariya0710@gmail.com</a></div>
+      <div class="card contact-card"><b>Phone :</b><a href="tel:+919778347220">97783 47220</a></div>
+      <div class="card contact-card"><b>Github :</b><a target="_blank" href="https://github.com/Annmariyajosek?tab=repositories">ann-mariya-jose-k</a></div>
+      <div class="card contact-card"><b>Location :</b>Malappuram, Kerala</div>
     </div>
   </section>
 
